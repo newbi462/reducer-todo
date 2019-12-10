@@ -1,12 +1,12 @@
-import React, { useReducer } from 'react';
+//import React from 'react'; not needed at least not yet
 
-export const initialState = {
-  [{
+export const initialState = [{
+
     item: 'Learn about reducers',
     completed: false,
     id: 3892987589
-  }]
-};
+
+}]
 
 export function reducer(state, action) {
   return state;
