@@ -15,7 +15,6 @@ function App() {
       <header className="App-header">
         <NotAddedContext.Provider value={[unAdded, setUnAdded]}>
           <RenderToDo />
-          <li>{unAdded}</li>
           {/*<AddTodo /> use of a reducer brakes the components natuer of react*/}
         </NotAddedContext.Provider>
 

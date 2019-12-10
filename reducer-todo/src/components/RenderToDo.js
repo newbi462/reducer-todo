@@ -25,6 +25,7 @@ export const RenderToDo = () => {
           </>
         );
       })}
+      <li>{unAdded}</li>
       </ul>
 
       add to do
@@ -34,6 +35,10 @@ export const RenderToDo = () => {
       <button onClick={() => {
         dispatch({ type: "NEWTODO", payload: unAdded });
       }}>Add to List</button>
+
+      <button onClick={() => {
+        dispatch({ type: "CLEARDONE" });
+      }}>Clear Done</button>
 		</>
 	);
 };
