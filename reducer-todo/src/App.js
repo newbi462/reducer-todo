@@ -1,14 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.scss';
 
 import { RenderToDo } from "./components/RenderToDo";
+import { AddTodo } from "./components/AddTodo";
+
+import { NotAddedContext } from "./contexts/NotAddedContext";
 
 function App() {
+  const [unAdded, setUnAdded] = useState("");
+
   return (
     <div className="App">
       <header className="App-header">
-        <RenderToDo />
+        <NotAddedContext.Provider value={[unAdded, setUnAdded]}>
+          <RenderToDo />
+          <li>{unAdded}</li>
+          {/*<AddTodo /> use of a reducer brakes the components natuer of react*/}
+        </NotAddedContext.Provider>
 
 
 

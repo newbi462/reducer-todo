@@ -1,20 +1,39 @@
-import React, { useReducer } from 'react';
+import React, { useReducer, useContext } from 'react';
 
 import { reducer, initialState } from "./../reducers/reducer";
 
-export const RenderToDo = props => {
+import { NotAddedContext } from "./../contexts/NotAddedContext";
+
+export const RenderToDo = () => {
+  const [unAdded, setUnAdded] = useContext(NotAddedContext);
   const [state, dispatch] = useReducer(reducer, initialState)
 
 	return (
 		<>
-    I WORKS
+    Tap item to toggle done undone
+    <ul>
     {state.map(function( item, index ) {
         return (
           <>
-          <li key={index}>{item.item}</li>
+          <li
+            className={item.completed.toString()}
+            key={index}
+            onClick={() => {
+              dispatch({ type: "TOGGLEDONE", payload: index });
+            }}
+          >{item.item}</li>
           </>
         );
       })}
+      </ul>
+
+      add to do
+      <input placeholder="New To Do" onChange={(e) => {
+        setUnAdded(e.target.value);
+      }} />
+      <button onClick={() => {
+        dispatch({ type: "NEWTODO", payload: unAdded });
+      }}>Add to List</button>
 		</>
 	);
 };
